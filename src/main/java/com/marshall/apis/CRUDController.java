@@ -16,16 +16,22 @@ import com.marshall.models.RADataRequest;
 import com.marshall.models.RADataResponse;
 import com.marshall.services.CSVService;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
 /**
  * @author Vis
  *
  */
 @RestController
+@RequestMapping("ra")
+@Api(value = "/ra")
 public class CRUDController {
 
 	@Autowired
 	private CSVService csvService;
 
+	@ApiOperation(value = "accepts a hid and outputs record", response = RADataResponse.class)
 	@RequestMapping(method={RequestMethod.GET}, produces=MediaType.APPLICATION_JSON_VALUE)
 	public RADataResponse getData( @Valid RADataRequest raDataRequest){
 		RADataResponse raDataResponse=new RADataResponse();
